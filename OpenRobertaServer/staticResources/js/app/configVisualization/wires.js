@@ -3,14 +3,14 @@ define(["require", "exports"], function (require, exports) {
     Object.defineProperty(exports, "__esModule", { value: true });
     var DEFAULT_COLORS = { "5V": "#f01414", "GND": "#333333" };
     var DARK = 50;
-    var Point = /** @class */ (function () {
+    var Point = (function () {
         function Point(x, y) {
             this.x = x;
             this.y = y;
         }
         return Point;
     }());
-    var WirePoint = /** @class */ (function () {
+    var WirePoint = (function () {
         function WirePoint(position) {
             this.pos = position;
             this.next = null;
@@ -19,7 +19,7 @@ define(["require", "exports"], function (require, exports) {
             get: function () {
                 return this.pos;
             },
-            enumerable: false,
+            enumerable: true,
             configurable: true
         });
         return WirePoint;
@@ -35,7 +35,7 @@ define(["require", "exports"], function (require, exports) {
         }
         return selectBetween[1];
     }
-    var WireDrawer = /** @class */ (function () {
+    var WireDrawer = (function () {
         function WireDrawer(origin, destination, portIndex, blockCorners) {
             this.blockCorners = blockCorners;
             if (blockCorners)
@@ -88,7 +88,7 @@ define(["require", "exports"], function (require, exports) {
                 }
                 return path;
             },
-            enumerable: false,
+            enumerable: true,
             configurable: true
         });
         WireDrawer.darken = function (color) {

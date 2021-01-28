@@ -853,5 +853,6 @@ configuration:
   TOUCH: [robBrick_touch]
   ULTRASONIC: [robConf_ultrasonic, robBrick_ultrasonic]
   WEDO: [robBrick_WeDo-Brick]
+  MATATABOT: [robBrick_MatataBot-Brick]
   WIRELESS: [robConf_wireless]
   PARTICLE: [robConf_particle]

@@ -41,6 +41,8 @@ public abstract class AstTest {
             robotName = "vorwerk";
         } else if ( pwd.contains("RobotWeDo") ) {
             robotName = "wedo";
+        } else if ( pwd.contains("RobotMatataBot") ) {
+            robotName = "matatabot";
         }
         testFactory = Util.configureRobotPlugin(robotName, "", "", pluginDefines);
         testFactoryNewConf = Util.configureRobotPlugin(robotName, "", "", pluginDefinesNewConf);

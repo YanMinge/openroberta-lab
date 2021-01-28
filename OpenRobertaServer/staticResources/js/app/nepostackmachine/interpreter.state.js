@@ -1,8 +1,7 @@
 define(["require", "exports", "./interpreter.constants", "./interpreter.util"], function (require, exports, C, U) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.State = void 0;
-    var State = /** @class */ (function () {
+    var State = (function () {
         /**
          * initialization of the state.
          * Gets the array of operations and the function definitions and resets the whole state

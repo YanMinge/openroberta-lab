@@ -1,8 +1,7 @@
 define(["require", "exports", "./interpreter.state", "./interpreter.constants", "./interpreter.util", "./neuralnetwork.playground"], function (require, exports, interpreter_state_1, C, U, PG) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Interpreter = void 0;
-    var Interpreter = /** @class */ (function () {
+    var Interpreter = (function () {
         /*
          *
          * . @param generatedCode argument contains the operations and the function definitions
@@ -607,7 +606,6 @@ define(["require", "exports", "./interpreter.state", "./interpreter.constants", 
          * . @param expr to be evaluated
          */
         Interpreter.prototype.evalExpr = function (expr) {
-            var _a;
             var kind = expr[C.EXPR];
             var s = this.s;
             switch (kind) {
@@ -943,6 +941,7 @@ define(["require", "exports", "./interpreter.state", "./interpreter.constants", 
                 default:
                     U.dbcException("invalid expr op: " + kind);
             }
+            var _a;
         };
         Interpreter.prototype.evalBinary = function (subOp, left, right) {
             var leftIsArray = Array.isArray(left);

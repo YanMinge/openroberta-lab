@@ -6,7 +6,6 @@
 define(["require", "exports", "./neuralnetwork.nn", "./neuralnetwork.state", "d3"], function (require, exports, nn, neuralnetwork_state_1, d3) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.oneStep = exports.runPlayground = void 0;
     var mainWidth;
     var RECT_SIZE = 30;
     var BIAS_SIZE = 5;

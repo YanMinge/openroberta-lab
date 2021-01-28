@@ -48,6 +48,7 @@
         <module>RobotMbed</module>
         <module>RobotVorwerk</module>
         <module>RobotWeDo</module>
+        <module>RobotMatataBot</module>
         <module>RobotEdison</module>
         <module>RobotRaspberryPi</module>
         <module>OpenRobertaServer</module>
@@ -129,6 +130,11 @@
             <dependency>
                 <groupId>de.fhg.iais.openroberta</groupId>
                 <artifactId>RobotWedo</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.fhg.iais.openroberta</groupId>
+                <artifactId>RobotMatataBot</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

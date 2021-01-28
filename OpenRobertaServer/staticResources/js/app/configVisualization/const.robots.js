@@ -1,7 +1,6 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.ROBOTS = void 0;
     exports.ROBOTS = {
         "arduino_mega": {
             "ports": [

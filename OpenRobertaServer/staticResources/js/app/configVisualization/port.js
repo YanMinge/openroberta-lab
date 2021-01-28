@@ -1,8 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Port = void 0;
-    var Port = /** @class */ (function () {
+    var Port = (function () {
         function Port(parent, name, position, connectedTo) {
             this.position_ = position;
             this.element_ = window.Blockly.createSvgElement('rect', {
@@ -29,14 +28,14 @@ define(["require", "exports"], function (require, exports) {
             get: function () {
                 return this.element_;
             },
-            enumerable: false,
+            enumerable: true,
             configurable: true
         });
         Object.defineProperty(Port.prototype, "position", {
             get: function () {
                 return this.position_;
             },
-            enumerable: false,
+            enumerable: true,
             configurable: true
         });
         return Port;

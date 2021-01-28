@@ -1,5 +1,5 @@
-define(['exports', 'guiState.controller', 'interpreter.interpreter', 'interpreter.robotWeDoBehaviour', 'log', 'blockly', 'jquery'], function(exports,
-    GUISTATE_C, INTERPRETER, WEDO_B, LOG, Blockly, $) {
+define(['exports', 'guiState.controller', 'interpreter.interpreter', 'interpreter.robotWeDoBehaviour', 'interpreter.robotMatataBotBehaviour', 'log', 'blockly', 'jquery'], function(exports,
+    GUISTATE_C, INTERPRETER, WEDO_B, MATATABOT_B, LOG, Blockly, $) {
 
     var ready;
     var aLanguage;
@@ -62,6 +62,14 @@ define(['exports', 'guiState.controller', 'interpreter.interpreter', 'interprete
                             var xml = Blockly.Xml.domToText(dom);
                             GUISTATE_C.setConfigurationXML(xml);
                             break;
+                        } else if (blocks[i].type === "robBrick_MatataBot-Brick") {
+                            var field = blocks[i].getField("VAR");
+                            field.setValue(data.brickname.replace(/\s/g, ''));
+                            blocks[i].render();
+                            var dom = Blockly.Xml.workspaceToDom(bricklyWorkspace);
+                            var xml = Blockly.Xml.domToText(dom);
+                            GUISTATE_C.setConfigurationXML(xml);
+                            break;
                         }
                     }
                 } else if (data.type === "connect" && data.state === "disconnected") {
@@ -75,6 +83,14 @@ define(['exports', 'guiState.controller', 'interpreter.interpreter', 'interprete
                         if (blocks[i].type === "robBrick_WeDo-Brick") {
                             var field = blocks[i].getField("VAR");
                             field.setValue(Blockly.Msg.ROBOT_DEFAULT_NAME_WEDO || Blockly.Msg.ROBOT_DEFAULT_NAME || "Brick1");
+                            blocks[i].render();
+                            var dom = Blockly.Xml.workspaceToDom(bricklyWorkspace);
+                            var xml = Blockly.Xml.domToText(dom);
+                            GUISTATE_C.setConfigurationXML(xml);
+                            break;
+                        } else if (blocks[i].type === "robBrick_MatataBot-Brick") {
+                            var field = blocks[i].getField("VAR");
+                            field.setValue(Blockly.Msg.ROBOT_DEFAULT_NAME_MATATABOT || Blockly.Msg.ROBOT_DEFAULT_NAME || "Brick1");
                             blocks[i].render();
                             var dom = Blockly.Xml.workspaceToDom(bricklyWorkspace);
                             var xml = Blockly.Xml.domToText(dom);
@@ -115,6 +131,10 @@ define(['exports', 'guiState.controller', 'interpreter.interpreter', 'interprete
         switch (GUISTATE_C.getRobot()) {
             case "wedo":
                 theRobotBehaviour = new WEDO_B.RobotWeDoBehaviour(jsToAppInterface, jsToDisplay);
+                break;
+            case "matatabot":
+                theRobotBehaviour = new MATATABOT_B.RobotMatataBotBehaviour(jsToAppInterface, jsToDisplay);
+                break;
             // TODO: introduce here new robots and behaviours and add them to the dependencies on top of the file
             default:
                 LOG.error("Webview: no robot behaviour for " + GUISTATE_C.getRobot() + " available!");

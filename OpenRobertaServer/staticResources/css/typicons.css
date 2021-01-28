@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'typicons';
-  src:  url('fonts/typicons.eot?l6ia6j');
-  src:  url('fonts/typicons.eot?l6ia6j#iefix') format('embedded-opentype'),
-    url('fonts/typicons.ttf?l6ia6j') format('truetype'),
-    url('fonts/typicons.woff?l6ia6j') format('woff'),
-    url('fonts/typicons.svg?l6ia6j#typicons') format('svg');
+  src:  url('fonts/typicons.eot?x489o4');
+  src:  url('fonts/typicons.eot?x489o4#iefix') format('embedded-opentype'),
+    url('fonts/typicons.ttf?x489o4') format('truetype'),
+    url('fonts/typicons.woff?x489o4') format('woff'),
+    url('fonts/typicons.svg?x489o4#typicons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -1134,4 +1134,7 @@
 }
 .typcn-media-cancel:before {
   content: "\ea6e";
+}
+.typcn-matatabot:before {
+  content: "\ea6f";
 }

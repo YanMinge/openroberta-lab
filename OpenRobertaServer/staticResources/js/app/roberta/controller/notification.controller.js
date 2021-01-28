@@ -9,12 +9,9 @@ DO NOT EDIT THIS IN openroberta-lab/OpenRobertaServer/staticResources/js !
 -------------------------------------------------------------------------
 */
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -24,7 +21,6 @@ var __extends = (this && this.__extends) || (function () {
 define(["require", "exports", "guiState.model", "guiState.controller", "notification.model", "comm", "jquery"], function (require, exports, guiStateModel, guiStateController, notificationModel, comm, $) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.showNotificationModal = exports.reloadNotifications = exports.init = void 0;
     var fadingDuration = 400;
     var notificationElement = $("#releaseInfo");
     var notificationElementTitle = notificationElement.children('#releaseInfoTitle');
@@ -119,7 +115,7 @@ define(["require", "exports", "guiState.model", "guiState.controller", "notifica
     function initNotifications(notificationSpecifications) {
         return notificationSpecifications.map(function (specification) { return new NotificationProcessor(specification); });
     }
-    var EventHandler = /** @class */ (function () {
+    var EventHandler = (function () {
         function EventHandler(selector, event, fn) {
             this.selector = selector;
             this.event = event;
@@ -147,7 +143,7 @@ define(["require", "exports", "guiState.model", "guiState.controller", "notifica
         };
         return EventHandler;
     }());
-    var NotificationProcessor = /** @class */ (function () {
+    var NotificationProcessor = (function () {
         function NotificationProcessor(specification) {
             this.activeEventHandler = [];
             this.notificationHandlers = [];
@@ -271,7 +267,7 @@ define(["require", "exports", "guiState.model", "guiState.controller", "notifica
         };
         return NotificationProcessor;
     }());
-    var NotificationState = /** @class */ (function () {
+    var NotificationState = (function () {
         function NotificationState(time) {
             this.active = false;
             this.time = time;
@@ -304,7 +300,7 @@ define(["require", "exports", "guiState.model", "guiState.controller", "notifica
         };
         return NotificationState;
     }());
-    var PopupNotificationState = /** @class */ (function (_super) {
+    var PopupNotificationState = (function (_super) {
         __extends(PopupNotificationState, _super);
         function PopupNotificationState(popupNotification) {
             var _this = _super.call(this, popupNotification.time || defaultPopupTime) || this;
@@ -324,7 +320,7 @@ define(["require", "exports", "guiState.model", "guiState.controller", "notifica
         };
         return PopupNotificationState;
     }(NotificationState));
-    var ElementMarkerState = /** @class */ (function (_super) {
+    var ElementMarkerState = (function (_super) {
         __extends(ElementMarkerState, _super);
         function ElementMarkerState(elementMarker) {
             var _this = _super.call(this, elementMarker.time || defaultElementMarkerTime) || this;
@@ -351,7 +347,7 @@ define(["require", "exports", "guiState.model", "guiState.controller", "notifica
         };
         return ElementMarkerState;
     }(NotificationState));
-    var StartScreenNotificationState = /** @class */ (function (_super) {
+    var StartScreenNotificationState = (function (_super) {
         __extends(StartScreenNotificationState, _super);
         function StartScreenNotificationState(startScreen) {
             var _this = _super.call(this, startScreen.time || defaultStartScreenTime) || this;

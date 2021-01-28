@@ -1,36 +1,23 @@
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
 };
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+            t[p[i]] = s[p[i]];
     return t;
-};
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
 };
 define(["require", "exports", "./wires", "./const.robots", "./robotBlock", "./port", "jquery"], function (require, exports, wires_1, const_robots_1, robotBlock_1, port_1, $) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.CircuitVisualization = void 0;
     var SEP = 2.5;
     var STROKE = 1.8;
     // fix for IE which does not have the remove function
@@ -41,7 +28,7 @@ define(["require", "exports", "./wires", "./const.robots", "./robotBlock", "./po
             }
         };
     }
-    var CircuitVisualization = /** @class */ (function () {
+    var CircuitVisualization = (function () {
         function CircuitVisualization(workspace, dom) {
             var _this = this;
             this.scale = 1;
@@ -78,14 +65,14 @@ define(["require", "exports", "./wires", "./const.robots", "./robotBlock", "./po
             this.updateBlockPorts = function (block) {
                 block.ports.forEach(function (port) {
                     var position = port.position;
-                    port.moveTo(__assign(__assign({}, position), { x: _this.calculatePortPosition(block, port.connectedTo) }));
+                    port.moveTo(__assign({}, position, { x: _this.calculatePortPosition(block, port.connectedTo) }));
                 });
                 _this.connections = _this.connections.map(function (_a) {
                     var position = _a.position, connectedTo = _a.connectedTo, others = __rest(_a, ["position", "connectedTo"]);
                     if (others.blockId !== block.id) {
                         return __assign({ position: position, connectedTo: connectedTo }, others);
                     }
-                    return __assign({ position: __assign(__assign({}, position), { x: _this.calculatePortPosition(block, connectedTo) }), connectedTo: connectedTo }, others);
+                    return __assign({ position: __assign({}, position, { x: _this.calculatePortPosition(block, connectedTo) }), connectedTo: connectedTo }, others);
                 });
             };
             this.createBlockPorts = function (block) {
@@ -139,10 +126,10 @@ define(["require", "exports", "./wires", "./const.robots", "./robotBlock", "./po
                 var connections = _this.connections.filter(function (connection) { return connection.blockId === block.id; });
                 connections = connections.map(function (_a) {
                     var name = _a.name, others = __rest(_a, ["name"]);
-                    return (__assign(__assign({ name: name }, others), { connectedTo: _this.robot.getPortByName(block.confBlock + " " + block.getFieldValue(name)) ? block.confBlock + " " + block.getFieldValue(name) : block.getFieldValue(name) || others.connectedTo }));
+                    return (__assign({ name: name }, others, { connectedTo: _this.robot.getPortByName(block.confBlock + " " + block.getFieldValue(name)) ? block.confBlock + " " + block.getFieldValue(name) : block.getFieldValue(name) || others.connectedTo }));
                 });
                 _this.connections = _this.connections.filter(function (connection) { return connection.blockId !== block.id; });
-                _this.connections = __spreadArrays(_this.connections, connections);
+                _this.connections = _this.connections.concat(connections);
             };
             this.deleteConnections = function (blockId) {
                 _this.connections = _this.connections.filter(function (connection) {
